@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The line</title>
+    <link rel="icon" href="log.jpg">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Hide the checkbox input */
+        #menu-toggle {
+            display: none;
+        }
+        
+        /* Style the hamburger icon */
+        #menu-icon {
+            display: block;
+        }
+
+        /* When checkbox is checked, show the mobile menu */
+        #menu-toggle:checked ~ #mobile-menu {
+            display: block;
+        }
+
+        /* Hide the menu by default on mobile */
+        #mobile-menu {
+            display: none;
+        }
+        
+        /* Mobile menu styles */
+        #menu-toggle:checked ~ #mobile-menu .space-y-1 {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="bg-gradient-to-r from-[#cdb4db] to-[#9e7bb5]">
+            <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+                <div class="relative flex h-16 items-center justify-between">
+                    <!-- Mobile menu toggle -->
+                    <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+                        <label for="menu-toggle" id="menu-icon" class="relative inline-flex items-center justify-center rounded-md p-2 text-[#ffafcc] hover:bg-[#b59bca] hover:text-[#f89ec5] focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                            <span class="sr-only">Open main menu</span>
+                            <svg class="block size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                            </svg>
+                            <svg class="hidden size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                            </svg>
+                        </label>
+                        <!-- Hidden checkbox for controlling the menu toggle -->
+                        <input type="checkbox" id="menu-toggle" />
+                    </div>
+                    <div class="flex flex-1 items-center justify-start sm:items-stretch sm:justify-start">
+                        <div class="flex shrink-0 items-center">
+                            <img class="h-8 w-auto" src="log.jpg" alt="Your Company">
+                            <span class="ml-2 text-white text-xl font-semibold">The Line</span> <!-- Title next to the logo -->
+                        </div>
+                        <div class="hidden sm:ml-6 sm:block">
+                            <div class="flex space-x-4">
+                                <a href="#" class="rounded-md bg-black px-3 py-2 text-sm font-medium text-white" aria-current="page">Dashboard</a>
+                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gradient-to-r hover:from-[#9e7bb5] hover:to-[#cdb4db]">Team</a>
+                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gradient-to-r hover:from-[#9e7bb5] hover:to-[#cdb4db]">Projects</a>
+                                <a href="#" class="rounded-md px-3 py-2 text-sm font-medium text-white hover:bg-gradient-to-r hover:from-[#9e7bb5] hover:to-[#cdb4db]">Calendar</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                        <button type="button" class="relative rounded-full bg-gradient-to-r from-[#9e7bb5] to-[#7b5b90] p-1 text-white hover:bg-[#7b5b90] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#9e7bb5]">
+                            <span class="absolute -inset-1.5"></span>
+                            <span class="sr-only">View notifications</span>
+                            <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                            </svg>
+                        </button>
+                        <div class="relative ml-3">
+                            <div>
+                                <button type="button" class="relative flex rounded-full bg-black text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#9e7bb5]" id="user-menu-button" aria-expanded="false" aria-haspopup="true">
+                                    <span class="absolute -inset-1.5"></span>
+                                    <span class="sr-only">Open user menu</span>
+                                    <img class="size-8 rounded-full" src="powder.jpg" alt="">
+                                </button>
+                            </div>
+                            <div class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Your Profile</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-1">Settings</a>
+                                <a href="#" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Sign out</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="sm:hidden">
+                <div class="space-y-1 px-2 pb-3 pt-2">
+                    <a href="#" class="block rounded-md bg-black px-3 py-2 text-base font-medium text-white" aria-current="page">Dashboard</a>
+                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gradient-to-r hover:from-[#9e7bb5] hover:to-[#cdb4db]">Team</a>
+                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gradient-to-r hover:from-[#9e7bb5] hover:to-[#cdb4db]">Projects</a>
+                    <a href="#" class="block rounded-md px-3 py-2 text-base font-medium text-white hover:bg-gradient-to-r hover:from-[#9e7bb5] hover:to-[#cdb4db]">Calendar</a>
+                </div>
+            </div>
+        </nav>       
+    </header>
+    <div class="relative isolate overflow-hidden bg-gray-900 py-24 sm:py-32">
+        <div class="absolute inset-0 bg-black bg-opacity-25 z-10"></div>
+        <img src="pastel.jpg" alt="" class="absolute inset-0 z-0 w-full h-full object-cover object-right md:object-center">
+        <div class="mx-auto max-w-7xl px-6 lg:px-8 relative z-20">
+            <div class="mx-auto max-w-2xl lg:mx-0">
+                <h2 class="text-5xl font-bold tracking-tight text-[#cdb4db] sm:text-7xl">Join Our Drawing Community</h2>
+                <p class="mt-8 text-lg font-semibold text-[#F1ACCF] sm:text-xl">Discover the joy of sketching, painting, and digital art! Whether you're just starting or a seasoned artist, there's always something new to learn and share with fellow creatives.</p>
+            </div>
+            <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
+                <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-base font-medium text-[#ffc8dd]">
+                    <a href="#" class="group relative p-4 rounded-xl border-2 border-transparent hover:border-[#9e7bb5] transition duration-300 ease-in-out">
+                        <span class="absolute inset-0 bg-gradient-to-r from-[#f89ec5] to-[#cdb4db] opacity-40 rounded-xl"></span>
+                        <span class="relative z-10">Art Tutorials <span aria-hidden="true" class="group-hover:translate-x-2 inline-block transition-all duration-300">&rarr;</span></span>
+                    </a>
+                    <a href="#" class="group relative p-4 rounded-xl border-2 border-transparent hover:border-[#9e7bb5] transition duration-300 ease-in-out">
+                        <span class="absolute inset-0 bg-gradient-to-r from-[#f89ec5] to-[#cdb4db] opacity-40 rounded-xl"></span>
+                        <span class="relative z-10">Drawing Challenges <span aria-hidden="true" class="group-hover:translate-x-2 inline-block transition-all duration-300">&rarr;</span></span>
+                    </a>
+                    <a href="#" class="group relative p-4 rounded-xl border-2 border-transparent hover:border-[#9e7bb5] transition duration-300 ease-in-out">
+                        <span class="absolute inset-0 bg-gradient-to-r from-[#f89ec5] to-[#cdb4db] opacity-40 rounded-xl"></span>
+                        <span class="relative z-10">Creative Resources <span aria-hidden="true" class="group-hover:translate-x-2 inline-block transition-all duration-300">&rarr;</span></span>
+                    </a>
+                    <a href="#" class="group relative p-4 rounded-xl border-2 border-transparent hover:border-[#9e7bb5] transition duration-300 ease-in-out">
+                        <span class="absolute inset-0 bg-gradient-to-r from-[#f89ec5] to-[#cdb4db] opacity-40 rounded-xl"></span>
+                        <span class="relative z-10">Meet the Artists <span aria-hidden="true" class="group-hover:translate-x-2 inline-block transition-all duration-300">&rarr;</span></span>
+                    </a>
+                </div>
+                <dl class="mt-16 grid grid-cols-1 gap-8 sm:mt-20 sm:grid-cols-2 lg:grid-cols-4">
+                    <div class="flex flex-col-reverse gap-1">
+                        <dt class="text-base text-[#a2d2ff]">Art Exhibitions Worldwide</dt>
+                        <dd class="text-4xl font-semibold tracking-tight text-[#bde0fe]">15</dd>
+                    </div>
+                    <div class="flex flex-col-reverse gap-1">
+                        <dt class="text-base text-[#a2d2ff]">Artists Collaborating</dt>
+                        <dd class="text-4xl font-semibold tracking-tight text-[#bde0fe]">500+</dd>
+                    </div>
+                    <div class="flex flex-col-reverse gap-1">
+                        <dt class="text-base text-[#a2d2ff]">Hours Spent Drawing</dt>
+                        <dd class="text-4xl font-semibold tracking-tight text-[#bde0fe]">1000+</dd>
+                    </div>
+                    <div class="flex flex-col-reverse gap-1">
+                        <dt class="text-base text-[#a2d2ff]">Creative Breaks</dt>
+                        <dd class="text-4xl font-semibold tracking-tight text-[#bde0fe]">Unlimited</dd>
+                    </div>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <section class="posts">
+        <div class="bg-white py-24 sm:py-32">
+            <div class="mx-auto max-w-7xl px-6 lg:px-8">
+                <div class="mx-auto max-w-2xl lg:mx-0">
+                    <h2 class="text-[#cdb4db] text-4xl font-semibold tracking-tight sm:text-5xl">From the blog</h2>
+                    <p class="mt-2 text-lg text-[#4B0082]">Dive into expert guidance on improving your drawing techniques and style.</p>
+                </div>
+                <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-[#add8e6] pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                    <!-- Blog Post 1 -->
+                    <article class="flex max-w-xl flex-col items-start justify-between">
+                        <div class="flex items-center gap-x-4 text-xs">
+                            <time datetime="2020-03-16" class="text-[#a2b9cc]">January 10, 2024</time>
+                            <a href="#" class="relative z-10 rounded-full bg-[#4fa3d1] px-3 py-1.5 font-medium text-white hover:bg-[#58a7c7]">Drawing Basics</a>
+                        </div>
+                        <div class="group relative">
+                            <h3 class="mt-3 text-lg font-semibold text-[#5a8fbe] group-hover:text-[#3e7ca2]">
+                                <a href="#">
+                                    <span class="absolute inset-0"></span>
+                                    Mastering the Basics: Your First Steps in Drawing
+                                </a>
+                            </h3>
+                            <p class="mt-5 line-clamp-3 text-sm text-[#6ca0d4]">Starting your drawing journey can feel daunting, but every great artist begins with the basics. In this post, we explore simple techniques and exercises that will help you build a solid foundation. Whether you're drawing for the first time or refreshing your skills, these tips will help you gain confidence and create with ease.</p>
+                        </div>
+                        <div class="relative mt-8 flex items-center gap-x-4">
+                            <img src="jinx.jpg" alt="Jinx" class="w-12 h-12 rounded-full bg-[#4fa3d1]">
+                            <div class="text-sm">
+                                <p class="font-semibold text-[#a2b9cc]">
+                                    <a href="#">
+                                        <span class="absolute inset-0"></span>
+                                        Jinx
+                                    </a>
+                                </p>
+                                <p class="text-[#8db4d4]">Illustrator / Art Director</p>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Blog Post 2 -->
+                    <article class="flex max-w-xl flex-col items-start justify-between">
+                        <div class="flex items-center gap-x-4 text-xs">
+                            <time datetime="2020-03-16" class="text-[#a2b9cc]">February 5, 2024</time>
+                            <a href="#" class="relative z-10 rounded-full bg-[#4fa3d1] px-3 py-1.5 font-medium text-white hover:bg-[#58a7c7]">Digital Art</a>
+                        </div>
+                        <div class="group relative">
+                            <h3 class="mt-3 text-lg font-semibold text-[#5a8fbe] group-hover:text-[#3e7ca2]">
+                                <a href="#">
+                                    <span class="absolute inset-0"></span>
+                                    From Pencil to Digital: Transitioning Your Art
+                                </a>
+                            </h3>
+                            <p class="mt-5 line-clamp-3 text-sm text-[#6ca0d4]">The world of digital art opens up a new realm of possibilities for artists, but how do you transition from traditional pencil and paper to a digital canvas? This post covers everything from choosing the right software to mastering the tools that make digital drawing feel just as natural as sketching by hand.</p>
+                        </div>
+                        <div class="relative mt-8 flex items-center gap-x-4">
+                            <img src="vi.jpg" alt="Vi" class="w-12 h-12 rounded-full bg-[#4fa3d1]">
+                            <div class="text-sm">
+                                <p class="font-semibold text-[#a2b9cc]">
+                                    <a href="#">
+                                        <span class="absolute inset-0"></span>
+                                        Vi
+                                    </a>
+                                </p>
+                                <p class="text-[#8db4d4]">Graphic Designer / Digital Artist</p>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- Blog Post 3 -->
+                    <article class="flex max-w-xl flex-col items-start justify-between">
+                        <div class="flex items-center gap-x-4 text-xs">
+                            <time datetime="2020-03-16" class="text-[#a2b9cc]">March 2, 2024</time>
+                            <a href="#" class="relative z-10 rounded-full bg-[#4fa3d1] px-3 py-1.5 font-medium text-white hover:bg-[#58a7c7]">Creative Inspiration</a>
+                        </div>
+                        <div class="group relative">
+                            <h3 class="mt-3 text-lg font-semibold text-[#5a8fbe] group-hover:text-[#3e7ca2]">
+                                <a href="#">
+                                    <span class="absolute inset-0"></span>
+                                    Drawing Inspiration: Finding Creativity in the Everyday
+                                </a>
+                            </h3>
+                            <p class="mt-5 line-clamp-3 text-sm text-[#6ca0d4]">Inspiration can strike at any moment, but it's often hidden in the mundane. In this post, we dive into ways to find creative sparks in everyday life—whether it's a walk in the park, a cup of coffee, or the beauty of your surroundings. Learn how to train your eye to see the extraordinary in the ordinary.</p>
+                        </div>
+                        <div class="relative mt-8 flex items-center gap-x-4">
+                            <img src="ekko.jpg" alt="Ekko" class="w-12 h-12 rounded-full bg-[#4fa3d1]">
+                            <div class="text-sm">
+                                <p class="font-semibold text-[#a2b9cc]">
+                                    <a href="#">
+                                        <span class="absolute inset-0"></span>
+                                        Ekko
+                                    </a>
+                                </p>
+                                <p class="text-[#8db4d4]">Art Educator / Freelance Artist</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div class="bg-gray-50 py-12 sm:py-20 relative">
+        <!-- Title Section -->
+        <div class="text-center mb-16 relative z-10">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-300 via-purple-300 to-blue-300">
+                Creations by Our Amazing Community—Make Your Mark Next!
+            </h1>
+        </div>
+    
+        <!-- Images Section -->
+        <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
+            <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
+                <!-- Image 1 (Large image across two rows) -->
+                <div class="relative lg:row-span-2">
+                    <div class="h-full w-full overflow-hidden">
+                        <img class="h-full w-full object-cover" src="draw1.jpg" alt="Drawing 1">
+                    </div>
+                </div>
+                
+                <!-- Image 2 -->
+                <div class="relative max-lg:row-start-1">
+                    <div class="h-full w-full overflow-hidden">
+                        <img class="h-full w-full object-cover" src="draw2.jpg" alt="Drawing 2">
+                    </div>
+                </div>
+                
+                <!-- Image 3 -->
+                <div class="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
+                    <div class="h-full w-full overflow-hidden">
+                        <img class="h-full w-full object-cover" src="draw3.jpg" alt="Drawing 3">
+                    </div>
+                </div>
+                
+                <!-- Image 4 (Large image across two rows) -->
+                <div class="relative lg:row-span-2">
+                    <div class="h-full w-full overflow-hidden">
+                        <img class="h-full w-full object-cover" src="draw4.jpg" alt="Drawing 4">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="bg-gradient-to-r from-[#cdb4db] to-[#9e7bb5] py-20">
+        <div class="text-center">
+            <h3 class="text-3xl font-semibold text-white">Features of Our Platform</h3>
+            <div class="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3 sm:grid-cols-1">
+                <div class="flex flex-col items-center">
+                    <div class="h-16 w-16 rounded-full bg-gradient-to-r from-[#ffafcc] to-[#b59bca] flex items-center justify-center text-white text-xl">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <h4 class="mt-4 text-xl text-white">Creative Tools</h4>
+                    <p class="text-gray-200 mt-2">Access a variety of tools to help you create your best work, from digital brushes to editing software.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="h-16 w-16 rounded-full bg-gradient-to-r from-[#ffafcc] to-[#b59bca] flex items-center justify-center text-white text-xl">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4 class="mt-4 text-xl text-white">Community Support</h4>
+                    <p class="text-gray-200 mt-2">Join a passionate community of artists who will provide feedback, inspiration, and support on your creative journey.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="h-16 w-16 rounded-full bg-gradient-to-r from-[#ffafcc] to-[#b59bca] flex items-center justify-center text-white text-xl">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h4 class="mt-4 text-xl text-white">Online Courses</h4>
+                    <p class="text-gray-200 mt-2">Learn from the best in the industry with our curated online courses, tutorials, and challenges.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="relative isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+            <!-- Background Video -->
+            <div class="absolute inset-0 -z-20">
+                <video autoplay loop muted class="w-full h-full object-cover" aria-label="Background art video">
+                    <source src="art.mp4" type="video/mp4" />
+                </video>
+            </div>
+            <div class="absolute inset-0 bg-white bg-opacity-25 z-10"></div>
+    
+            <!-- Contact section content -->
+            <div class="mx-auto max-w-7xl relative z-10">
+                <h2 class="text-4xl font-semibold tracking-tight sm:text-5xl text-[#cdb4db]">Contact Us</h2>
+                <p class="mt-2 text-lg text-[#a68bb7]">We would love to hear from you. Reach out to us for more information or inquiries.</p>
+    
+                <!-- Contact Form -->
+                <form class="mt-12 grid grid-cols-1 gap-y-8 sm:grid-cols-2 sm:grid-rows-1 sm:gap-x-12 sm:gap-y-0 bg-white p-8 rounded-lg shadow-lg" aria-labelledby="contact-form">
+                    <div>
+                        <label for="name" class="block text-lg font-medium text-[#6a4c9c]">Full Name</label>
+                        <input type="text" id="name" name="name" class="mt-2 w-full rounded-md border-[#c9d7d5] shadow-sm focus:border-[#f7c6f5] focus:ring focus:ring-[#f7c6f5] focus:ring-opacity-50" required />
+                    </div>
+                    <div>
+                        <label for="email" class="block text-lg font-medium text-[#6a4c9c]">Email Address</label>
+                        <input type="email" id="email" name="email" class="mt-2 w-full rounded-md border-[#c9d7d5] shadow-sm focus:border-[#ffb3ba] focus:ring focus:ring-[#ffb3ba] focus:ring-opacity-50" required />
+                    </div>
+                    <div class="sm:col-span-2">
+                        <label for="message" class="block text-lg font-medium text-[#6a4c9c]">Message</label>
+                        <textarea id="message" name="message" rows="4" class="mt-2 w-full rounded-md border-[#c9d7d5] shadow-sm focus:border-[#f7c6f5] focus:ring focus:ring-[#f7c6f5] focus:ring-opacity-50" required></textarea>
+                    </div>
+                    <div class="sm:col-span-2">
+                        <button type="submit" class="w-full py-3 px-6 bg-[#f7c6f5] text-white text-lg font-medium rounded-md hover:bg-[#f9d8f9] focus:outline-none focus:ring-2 focus:ring-[#f7a9d7]">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gradient-to-r from-[#9e7bb5] to-[#cdb4db] py-12">
+        <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+            <!-- Content Section -->
+            <div class="flex justify-between items-center">
+                <!-- Links -->
+                <div class="flex space-x-4">
+                    <a href="#" class="text-white text-sm hover:text-[#f89ec5]">Privacy Policy</a>
+                    <a href="#" class="text-white text-sm hover:text-[#f89ec5]">Terms of Service</a>
+                    <a href="#" class="text-white text-sm hover:text-[#f89ec5]">Contact Us</a>
+                </div>
+                <!-- Social Media Icons -->
+                <div class="flex space-x-6">
+                    <a href="#" class="text-white hover:text-[#f89ec5]">
+                        <!-- Font Awesome icon example, use an actual icon library or import icons -->
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-[#f89ec5]">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-[#f89ec5]">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-white hover:text-[#f89ec5]">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+            <!-- Copyright Section -->
+            <div class="mt-4 text-center text-white text-sm">
+                <p>&copy; 2024 The Line. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+
+</body>
+</html>
